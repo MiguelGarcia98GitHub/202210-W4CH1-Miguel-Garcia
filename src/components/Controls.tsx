@@ -1,9 +1,24 @@
-export function Controls() {
+export function Controls({ data, selectAll }: any) {
+  let pointingGentlemen = 0;
+
+  data.forEach((item: any) => {
+    if (item.selected === true) {
+      pointingGentlemen++;
+    }
+  });
+
   return (
     <>
       <section className="controls">
-        <p className="info">0 gentlemen pointing at you</p>
-        <button className="button button--select">Select all</button>
+        <p className="info">{pointingGentlemen} gentlemen pointing at you</p>
+        <button
+          className="button button--select"
+          onClick={() => {
+            selectAll();
+          }}
+        >
+          Select all
+        </button>
       </section>
     </>
   );
